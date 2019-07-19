@@ -265,7 +265,7 @@ model1 <- ergmito(fivenets ~ edges + nodematch("female"))
 
 \pause
 
-```{r fit-fivenets-print, echo=TRUE, cache=TRUE}
+```{r fit-fivenets-print, echo=TRUE, cache=FALSE}
 summary(model1) # 
 ```
 
@@ -285,12 +285,7 @@ Go to \url{https://github.com/muriteams/ergmito} for more on this R package.
 
 -  Simulated 20,000 samples of networks using the following steps:
 
-    1.  Draw parameters for two models:
-    
-        *  _edges_ and _mutual_,
-        *  _edges_ and _ttriad_ (transitive triples)
-        
-        from a uniform(-2, 2).
+    1.  Draw parameters for the model based on the terms _edges_ and _ttriad_ (transitive triples) from a uniform(-2, 2).
     
     2.  Draw group sizes by randomly selecting the number of networks of size 4 and size 5. Each sample has any of $\{10, 20, ..., 50\}$ networks.
 
@@ -304,17 +299,31 @@ Go to \url{https://github.com/muriteams/ergmito} for more on this R package.
 
 \begin{figure}
 \centering
-\includegraphics[width=.65\linewidth]{fig/bias-02-various-sizes-3-5.pdf}
+\includegraphics[width=.65\linewidth]{fig/bias-02-various-sizes-4-5-ttriad.pdf}
 \end{figure}
 
 ## How many networks? Power
 
 \begin{figure}
 \centering
-\includegraphics[width=.65\linewidth]{fig/power-02-various-sizes-3-5.pdf}
+\includegraphics[width=.65\linewidth]{fig/power-02-various-sizes-4-5-ttriad.pdf}
 \end{figure} \pause{}
 
 What about a real data set?
+
+## How many networks? improvements?
+
+\begin{figure}
+\centering
+\includegraphics[width=.65\linewidth]{fig/bias-relative-02-various-sizes-4-5-ttriad.pdf}
+\end{figure} 
+
+## How many networks? improvements? (contd')
+
+\begin{figure}
+\centering
+\includegraphics[width=.65\linewidth]{fig/bias-elapsed-02-various-sizes-4-5-ttriad.pdf}
+\end{figure} 
 
 ## Preliminary results
 
@@ -360,13 +369,15 @@ Suppose we have the following:
 
 -  In general, we are interested on assessing the following: $\graph\perp\depvar$ \pause
 
--  Ways to solve this: parametrically (e.g. GLMs) and non-parametrically (permutation tests):\pause
+- Three scenarios:\pause
 
-- For parametric approaches: Sample size?\pause
+    a. Direct association
     
-- Non-parametrically: Control for confounders ($\indepvar \to\depvar, \indepvar\to\graph$)?\pause
+    b. Known (hypothesized) mediated association (a knwon confounder)
+    
+    c. Uknown (hypothesized) mediated association (an unknown confounder)
 
-Perhaps ERGMs can help us here (to generate null distributions)
+
 
 <!-- ## Networks and team performance -->
 
